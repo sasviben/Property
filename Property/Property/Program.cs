@@ -15,38 +15,48 @@ namespace Property
         private string _name;
         private int _passMark = 35;
 
-        // deklaracija metode za dohvaćanje _passMark
-        public int GetPassMark()
+        // deklaracija get property PassMark
+        public int PassMark
         {
-            return this._passMark;
-        }
-        // deklaracija metode za inicijalizaciju _name
-        public void SetName(string name)
-        {
-            if(string.IsNullOrEmpty(name))
+            get
             {
-                throw new Exception("Name cannot be null or empty");
+               return this._passMark;
             }
-            this._name = name;
+           
         }
-        // deklaracija metode za dohvaćanje _name
-        public string GetName()
+      
+        // deklaracija get i set property-a Name
+        public string Name
         {
-            return string.IsNullOrEmpty(this._name) ? "No name" : this._name;
-        }
-        // deklaracija metode za inicijalizaciju _id
-        public void SetId(int id)
-        {
-            if(id <= 0)
+            get
             {
-                throw new Exception("Student id cannot be negativ or 0");
+                return this._name;
             }
-            this._id = id;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new Exception("Name cannot be null or empty");
+                }
+                this._name = value;
+            }
         }
-        // deklaracija metode za dohvaćanje _id
-        public int GetId()
+   
+        // deklaracija get i set property-a Id
+        public int Id
         {
-            return this._id;
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+               if (value <= 0)
+                {
+                    throw new Exception("Student id cannot be negativ or 0");
+                }
+                this._id = value;
+            }
         }
     }
 
@@ -57,12 +67,12 @@ namespace Property
         static void Main(string[] args)
         {
             Student S1 = new Student();
-            S1.SetId(101);
-            S1.SetName("sandro");
+            S1.Id = 101;
+            S1.Name = "sandro";
 
-            Console.WriteLine("Student Id = {0}", S1.GetId());
-            Console.WriteLine("Student Name = {0}", S1.GetName());
-            Console.WriteLine("Student PassMark = {0}", S1.GetPassMark());
+            Console.WriteLine("Student Id = {0}", S1.Id);
+            Console.WriteLine("Student Name = {0}", S1.Name);
+            Console.WriteLine("Student PassMark = {0}", S1.PassMark);
 
         }
     }
